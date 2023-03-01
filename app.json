@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "mobile-expedition",
+    "slug": "mobile-expedition",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
