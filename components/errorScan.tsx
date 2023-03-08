@@ -1,4 +1,4 @@
-import { AlertDialog, Button, Center, Flex, Text } from "native-base";
+import { AlertDialog, Button, Flex, Text } from "native-base";
 import React from "react";
 
 type errorScanDialogType = {

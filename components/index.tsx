@@ -50,38 +50,67 @@ export default function Home() {
     const handleBarCodeScanned = ({ type, data }) => {
         setTurnOnScanner(false);
         setBarcodeData({ type, data });
-        setArrayData([...arrayData, data]);
+        // setArrayData([...arrayData, data]);
+        handlePlayOkay();
+        // const isChange = items?.some((item) => item?.EAN === data.trim());
+        // const newDoNew = items?.map((prod) => {
+        //     if (prod?.EAN === data.trim()) {
+        //         if (prod?.QTD > prod?.CONFERIDO) {
+        //             handlePlayOkay();
+        //             setErrorMessage(
+        //                 `Item: ${prod?.EAN}, CONFERIDO: ${
+        //                     prod?.CONFERIDO + 1
+        //                 } de ${prod?.QTD}`
+        //             );
+        //             return { ...prod, CONFERIDO: prod.CONFERIDO + 1 };
+        //         } else {
+        //             setTextDialog("QTD do item máximo");
+        //             setIsOpenError(true);
+        //             setErrorMessage("QTD do item máximo");
+        //             handlePlayError();
+        //         }
+        //     }
+        //     return prod;
+        // });
 
-        const isChange = items?.some((item) => item?.EAN === data.trim());
-        if (isChange) {
-            const newDoNew = items?.map((prod) => {
-                if (prod?.EAN === data.trim()) {
-                    if (prod?.QTD > prod?.CONFERIDO) {
-                        handlePlayOkay();
-                        setErrorMessage(
-                            `Item: ${prod?.EAN}, CONFERIDO: ${
-                                prod?.CONFERIDO + 1
-                            } de ${prod?.QTD}`
-                        );
-                        return { ...prod, CONFERIDO: prod.CONFERIDO + 1 };
-                    } else {
-                        setTextDialog("QTD do item máximo");
-                        setIsOpenError(true);
-                        setErrorMessage("QTD do item máximo");
-                        handlePlayError();
-                    }
-                }
-                return prod;
-            });
-
-            setItems(newDoNew);
-        } else {
-            setTextDialog("Item Invalido");
-            setIsOpenError(true);
-            setErrorMessage("item inválido");
-            handlePlayError();
-        }
+        // setItems(newDoNew);
     };
+
+    // const handleBarCodeScanned = ({ type, data }) => {
+    //     setTurnOnScanner(false);
+    //     setBarcodeData({ type, data });
+    //     setArrayData([...arrayData, data]);
+
+    //     const isChange = items?.some((item) => item?.EAN === data.trim());
+    //     if (isChange) {
+    //         const newDoNew = items?.map((prod) => {
+    //             if (prod?.EAN === data.trim()) {
+    //                 if (prod?.QTD > prod?.CONFERIDO) {
+    //                     handlePlayOkay();
+    //                     setErrorMessage(
+    //                         `Item: ${prod?.EAN}, CONFERIDO: ${
+    //                             prod?.CONFERIDO + 1
+    //                         } de ${prod?.QTD}`
+    //                     );
+    //                     return { ...prod, CONFERIDO: prod.CONFERIDO + 1 };
+    //                 } else {
+    //                     setTextDialog("QTD do item máximo");
+    //                     setIsOpenError(true);
+    //                     setErrorMessage("QTD do item máximo");
+    //                     handlePlayError();
+    //                 }
+    //             }
+    //             return prod;
+    //         });
+
+    //         setItems(newDoNew);
+    //     } else {
+    //         setTextDialog("Item Invalido");
+    //         setIsOpenError(true);
+    //         setErrorMessage("item inválido");
+    //         handlePlayError();
+    //     }
+    // };
 
     if (hasPermission === null) {
         return <Text>Requesting for camera permission</Text>;
@@ -224,7 +253,8 @@ export default function Home() {
                         Limpar
                     </Button> */}
                     <Flex bg={"#fff"} padding={10} height={"17%"}>
-                        {errorMessage && <Text>{errorMessage}</Text>}
+                        {/* {errorMessage && <Text>{errorMessage}</Text>} */}
+                        {barcodeData && <Text>{barcodeData.data}</Text>}
                     </Flex>
                 </Flex>
             )}
